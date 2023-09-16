@@ -3,12 +3,12 @@ from typing import Union
 
 from lxml import etree  # type: ignore
 
-from .adapters.base import Adapter
+from .adapters.base import BaseAdapter
 
 AnyPath = Union[str, os.PathLike]
 
 
-def process_schema(schema_path: AnyPath, adapter: Adapter):
+def process_schema(schema_path: AnyPath, adapter: BaseAdapter):
     schema_f = open(schema_path, 'rb')
     columns = []
     attr_name = None
@@ -36,7 +36,7 @@ def process_schema(schema_path: AnyPath, adapter: Adapter):
     adapter.commit()
 
 
-def process_data(data_path: AnyPath, adapter: Adapter, is_delta=False):
+def process_data(data_path: AnyPath, adapter: BaseAdapter, is_delta=False):
     data_f = open(data_path, 'rb')
     context = etree.iterparse(data_f, events=('start', 'end'))
     _, root = next(context)
