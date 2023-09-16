@@ -51,7 +51,7 @@ def main():
     for delta_name in args.delta_files:
         print(f'Обработка изменений {delta_name}')
         try:
-            process_data(delta_name, adapter)
+            process_data(delta_name, adapter, True)
         except NotImplementedError:
             print('Данный адаптер не поддерживает изменения')
 
