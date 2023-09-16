@@ -1,0 +1,27 @@
+[build-system]
+requires = [
+    "setuptools",
+    "setuptools-git"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fias_converter"
+version = "0.0.1"
+description = "Универсальный конвертер файлов ФИАС"
+requires-python = ">=3.9"
+readme = "README.md"
+dependencies = [
+    "lxml",
+    "sqlalchemy"
+]
+
+[project.scripts]
+fias-converter = "fias_converter.cli:main"
+
+[project.optional-dependencies]
+all = [
+    "psycopg2-binary",
+    "PyMySql"
+]
+
