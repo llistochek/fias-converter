@@ -8,7 +8,9 @@
 - Использование в качестве библиотеки
 
 # Установка
-`pip install git+https://github.com/llistochek/fias-converter`
+```
+pip install git+https://github.com/llistochek/fias-converter
+```
 
 # Быстрый старт
 Внимание: вы должны вручную указать соответствующие схемы. Например,
