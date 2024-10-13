@@ -1,6 +1,6 @@
 import sqlalchemy
 import sqlalchemy.exc
-from sqlalchemy import Column, Double, Integer, String, Table, create_engine
+from sqlalchemy import Boolean, Column, Double, Integer, String, Table, create_engine
 from sqlalchemy.types import TypeEngine
 
 from .base import BaseAdapter, Row
@@ -9,7 +9,7 @@ _TYPE_MAPPINGS = {
     "xs:string": String,
     "xs:decimal": Double,
     "xs:date": String,
-    "xs:boolean": Integer,
+    "xs:boolean": Boolean,
     "xs:anySimpleType": String,
     "xs:long": Integer,
     "xs:integer": Integer,
