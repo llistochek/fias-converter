@@ -4,7 +4,6 @@ Row = dict[str, str]
 
 
 class BaseAdapter(ABC):
-
     @abstractmethod
     def __init__(self, url: str, **kwargs):
         pass

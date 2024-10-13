@@ -6,15 +6,15 @@ from sqlalchemy.types import TypeEngine
 from .base import BaseAdapter, Row
 
 _TYPE_MAPPINGS = {
-    'xs:string': String,
-    'xs:decimal': Double,
-    'xs:date': String,
-    'xs:boolean': Integer,
-    'xs:anySimpleType': String,
-    'xs:long': Integer,
-    'xs:integer': Integer,
-    'xs:int': Integer,
-    'xs:byte': Integer
+    "xs:string": String,
+    "xs:decimal": Double,
+    "xs:date": String,
+    "xs:boolean": Integer,
+    "xs:anySimpleType": String,
+    "xs:long": Integer,
+    "xs:integer": Integer,
+    "xs:int": Integer,
+    "xs:byte": Integer,
 }
 
 
@@ -35,7 +35,7 @@ class SqlalchemyAdapter(BaseAdapter):
     def create_table(self, name: str, columns: list[tuple[str, str]]):
         if name not in self.__meta.tables:
             sql_columns = [
-                Column(n, self.__convert_type(t), primary_key=(n == 'ID'))
+                Column(n, self.__convert_type(t), primary_key=(n == "ID"))
                 for n, t in columns
             ]
             Table(name, self.__meta, *sql_columns)
@@ -50,8 +50,7 @@ class SqlalchemyAdapter(BaseAdapter):
         try:
             self.__connection.execute(alchemy_table.insert(), row)
         except:
-            stmt = alchemy_table.update().where(
-                alchemy_table.c.ID == row['ID'])
+            stmt = alchemy_table.update().where(alchemy_table.c.ID == row["ID"])
             self.__connection.execute(stmt, row)
 
     def commit(self):
